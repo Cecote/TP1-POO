@@ -23,7 +23,12 @@ ostream& operator<<(ostream& out, Filme& filme){
         << "\nData: "               << filme.getData()
         << "\nDuracao: "            << filme.getDuracao() << " minutos"
         << "\nNumero de acessos: "  << filme.getNumeroAcessos()
-        << endl;
+        << "\nArtistas: "           << endl;
+    std::vector<string>art = filme.getArtistas();
+    for(auto itr = art.begin() ;itr != art.end(); ++itr){
+        out << *itr << "\n";
+    }
+    out << "\n";
     return out;
 }
 
