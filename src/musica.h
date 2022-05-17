@@ -16,23 +16,26 @@ enum generoMusica {
     Pop = 6,
     Samba = 7
 };
-enum formatoAudio { 
-    MP3 = 1, 
-    AAC = 2, 
-    OGG = 3, 
-    WMA = 4 
+enum formatoAudio {
+    MP3 = 1,
+    AAC = 2,
+    OGG = 3,
+    WMA = 4
 };
 
 class Musica : public Midia {
     std::vector<generoMusica> generosDaMusica;
     std::vector<formatoAudio> formatosDeAudio;
 
-    public:
+   public:
+    Musica(string = "", int = 0, int = 0, int = 0);
 
     vector<generoMusica> getGenerosDeAudio();
     void setGenerosDeAudio(generoMusica gda);
 
     vector<formatoAudio> getFormatosDeAudio();
     void setFormatosDeAudio(formatoAudio fda);
+
+    friend ostream& operator<<(ostream&, Musica&);
 };
 #endif
