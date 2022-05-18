@@ -5,15 +5,15 @@ Musica ::Musica(string tituloNovo, int dataNova, int duracaoNova, int numeroAces
 vector<generoMusica> Musica::getGenerosDeAudio() {
     return generosDaMusica;
 }
-void Musica::setGenerosDeAudio(generoMusica gda) {
-    generosDaMusica.push_back(gda);
+void Musica::setGenerosDeAudio(vector<generoMusica> gda) {
+    generosDaMusica = gda;
 }
 
 vector<formatoAudio> Musica::getFormatosDeAudio() {
     return formatosDeAudio;
 }
-void Musica::setFormatosDeAudio(formatoAudio fda) {
-    formatosDeAudio.push_back(fda);
+void Musica::setFormatosDeAudio(vector<formatoAudio> fda) {
+    formatosDeAudio = fda;
 }
 
 ostream& operator<<(ostream& out, Musica& musica) {

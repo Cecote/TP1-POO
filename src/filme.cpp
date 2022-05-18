@@ -7,15 +7,15 @@ Filme ::Filme(string tituloNovo, int dataNova, int duracaoNova, int numeroAcesso
 vector<generoFilme> Filme ::getGenerosDoFilme() {
     return generosDoFilme;
 }
-void Filme ::setGenerosDoFilme(generoFilme gdf) {
-    generosDoFilme.push_back(gdf);
+void Filme ::setGenerosDoFilme(std :: vector<generoFilme> gdf) {
+    generosDoFilme = gdf;
 }
 
 vector<formatoVideo> Filme ::getFormatosDeVideo() {
     return formatosDeVideo;
 }
-void Filme ::setFormatosDeVideo(formatoVideo fdf) {
-    formatosDeVideo.push_back(fdf);
+void Filme ::setFormatosDeVideo(vector<formatoVideo> fdf) {
+    formatosDeVideo = fdf;
 }
 
 ostream& operator<<(ostream& out, Filme& filme) {

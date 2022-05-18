@@ -17,7 +17,7 @@ class Midia {
     Midia(string = "", int = 0, int= 0, int = 0);
     
     vector<string> getArtistas();
-    void setArtistas(string artistaNovo);
+    void setArtistas(std::vector<string> artistaNovo);
     
     string getTitulo();
     void setTitulo(string tituloNovo);
@@ -29,7 +29,7 @@ class Midia {
     void setDuracao(int duracaoNova);
     
     vector<string> getKeywords();
-    void setKeywords(string keywordsNovas);
+    void setKeywords(std::vector<string> keywordsNovas);
     
     int getNumeroAcessos();
     void setNumeroAcessos(int numeroAcessosNovo);

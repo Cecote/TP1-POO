@@ -31,10 +31,10 @@ class Musica : public Midia {
     Musica(string = "", int = 0, int = 0, int = 0);
 
     vector<generoMusica> getGenerosDeAudio();
-    void setGenerosDeAudio(generoMusica gda);
+    void setGenerosDeAudio(vector<generoMusica>  gda);
 
     vector<formatoAudio> getFormatosDeAudio();
-    void setFormatosDeAudio(formatoAudio fda);
+    void setFormatosDeAudio(vector<formatoAudio> fda);
 
     friend ostream& operator<<(ostream&, Musica&);
 };

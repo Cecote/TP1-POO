@@ -5,8 +5,8 @@ Midia::Midia(string tituloNovo, int dataNova,int duracaoNova, int numeroAcessosN
 vector<string> Midia::getArtistas() { 
     return artistas; 
 }
-void Midia::setArtistas(string artistaNovo) { 
-    artistas.push_back(artistaNovo); 
+void Midia::setArtistas(std :: vector<string> artistaNovo) { 
+    artistas = artistaNovo; 
 }
 
 string Midia::getTitulo() { 
@@ -33,8 +33,8 @@ void Midia::setDuracao(int duracaoNova) {
 vector<string> Midia::getKeywords() { 
     return keywords; 
 }
-void Midia::setKeywords(string keywordsNovas) {
-    artistas.push_back(keywordsNovas);
+void Midia::setKeywords(std::vector<string> keywordsNovas) {
+    keywords = keywordsNovas;
 }
 
 int Midia::getNumeroAcessos() { 

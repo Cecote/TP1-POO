@@ -31,10 +31,10 @@ class Filme : public Midia {
     Filme(string = "", int = 0, int= 0, int = 0);
 
     vector<generoFilme> getGenerosDoFilme();
-    void setGenerosDoFilme(generoFilme gdf);
+    void setGenerosDoFilme(std :: vector<generoFilme> gdf);
 
     vector<formatoVideo> getFormatosDeVideo();
-    void setFormatosDeVideo(formatoVideo fdv);
+    void setFormatosDeVideo(vector<formatoVideo> fdv);
 
     friend ostream& operator<<(ostream&, Filme&);
 };
