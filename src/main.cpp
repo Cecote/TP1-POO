@@ -13,35 +13,28 @@ using std::string;
 #include "musica.h"
 
 using namespace std;
-// enum TipoMF{
-//   TMusica, TFilme
-// };
-// typedef struct TipoPagina {
-//   TipoMF Pt;
-//   union UU{
-//     struct U0 {
-//       Musica mus;
-//     };
-//     struct U1{
-//       Filme fil;
-//     };
-//   };
-// } TipoPagina;
 
 
-bool ordenaData(TipoPagina ff1, TipoPagina ff2) {
-    int x1, x2;
-    if(ff1.Pt==TMusica){
-        x1 = ff1.UU.U0.mus.getData();
-    }else{
-        x1 = ff1.UU.U1.fil.getData();
-    }
-    if(ff2.Pt==TMusica){
-        x2 = ff2.UU.U0.mus.getData();
-    }else{
-        x2 = ff2.UU.U1.fil.getData();
-    }
-    return x1 < x2 ? false : true;
+typedef struct
+{
+    int ano;
+    int choose;
+}ordencacaoPorData;
+
+
+bool ordenaData(ordencacaoPorData ff1, ordencacaoPorData ff2) {
+    
+    return ff1.ano < ff2.ano ? false : true;
+}
+
+bool ordenaDataM(Musica ff1, Musica ff2) {
+    
+    return ff1.getData() < ff2.getData() ? false : true;
+}
+
+bool ordenaDataF(Filme ff1, Filme ff2) {
+    
+    return ff1.getData() < ff2.getData() ? false : true;
 }
 
 
@@ -49,7 +42,7 @@ int main() {
     Filme f1;
     Musica m1;
     std ::vector<Filme> filmes;
-    std ::vector<TipoPagina> geral;
+    std ::vector<ordencacaoPorData> geral;
     std ::vector<string> artAux;
     std ::vector<string> keyAux;
     std ::vector<generoFilme> gfAux;
@@ -60,7 +53,8 @@ int main() {
     std ::vector<Musica> musicas;
     std ::vector<Musica>::iterator iterVar2;
     string titulo, nomeArtista, keyword;
-    int contGeral = 0;
+    
+    
     // generoFilme gF;
     // formatoVideo fV;
     // generoMusica gM;
@@ -222,9 +216,6 @@ int main() {
                         m1.setFormatosDeAudio(faAux);
                         m1.setGenerosDeAudio(gmAux);
                         musicas.push_back(m1);
-                        geral[contGeral].Pt=TMusica;
-                        geral[contGeral].UU.U0.mus = m1;
-                        contGeral++;
                         artAux.clear();
                         keyAux.clear();
 
@@ -358,9 +349,6 @@ int main() {
                         f1.setGenerosDoFilme(gfAux);
                         f1.setFormatosDeVideo(fvAux);
                         filmes.push_back(f1);
-                        geral[contGeral].Pt=TFilme;
-                        geral[contGeral].UU.U1.fil = f1;
-                        contGeral++;
                         artAux.clear();
                         keyAux.clear();
 
@@ -378,57 +366,90 @@ int main() {
                 break;
 
             case 2:
+                // geral.clear();
 
-                sort(geral.begin(), geral.end(), ordenaData);
+                // sort(filmes.begin(), filmes.end(), ordenaDataF);
+                // sort(musicas.begin(), musicas.end(), ordenaDataM);
 
-                for (auto itr = geral.begin(); itr != geral.end(); ++itr) {
-                    if((*itr).Pt == TMusica){
-                        cout << "\nMusica" << endl;
-                        cout << (*itr).UU.U0.mus << endl;
-                        cout << "Artistas: ";
+                // int teste = filmes.size();
+                // int test = musicas.size();
 
-                        Musica auxxx = (*itr).UU.U0.mus;
+                // for (int i = 0; i < teste; i++) {
+                //     g1.ano = filmes.at(i).getData();
+                //     g1.choose = 2;
+                //     geral.push_back(g1);
+                // }
 
-                        int test = auxxx.getArtistas().size();
-                        for(int j = 0; j < test; j++){
-                            cout << auxxx.getArtistas().at(j) << ";";
-                        }
+                // for (int i = 0; i < test; i++) {
+                //     g1.ano = musicas.at(i).getData();
+                //     g1.choose = 1;
+                //     geral.push_back(g1);
+                // }
 
-                        cout << endl;
-                        cout << "Keywords: ";
-        
-                        test = auxxx.getKeywords().size();
-                        for(int j = 0; j < test; j++){
-                            cout << auxxx.getKeywords().at(j) << ";";
-                        }
+                // sort(geral.begin(), geral.end(), ordenaData);
 
-                        cout << endl;
+                // int ordenaVetData = geral.size();
 
-                    }
-                    else{
-                        cout << "\nFilme" << endl;
-                        cout << (*itr).UU.U1.fil << endl;
-                        cout << "Artistas: ";
+                // auto itrF = filmes.begin();
+                // auto itrM = musicas.begin();
 
-                        Filme auxxxx = (*itr).UU.U1.fil;
+                // for (int jj = 0; jj < ordenaVetData; jj++) {
+                //     if(geral.at(jj).choose == 2){
+                //         cout << *itrF << endl;
+                //         cout << "Artistas: ";
+                        
+                //         Filme auxxx = *itrF;
+                //         int test = auxxx.getArtistas().size();
+                //         for(int k = 0; k < test; k++){
+                //             cout << auxxx.getArtistas().at(k) << ";";
+                //         }
 
-                        int test = auxxxx.getArtistas().size();
-                        for(int j = 0; j < test; j++){
-                            cout << auxxxx.getArtistas().at(j) << ";";
-                        }
+                //         cout << endl;
+                //         cout << "Keywords: ";
+                        
+                //         test = auxxx.getKeywords().size();
+                //         for(int k = 0; k < test; k++){
+                //             cout << auxxx.getKeywords().at(k) << ";";
+                //         }
 
-                        cout << endl;
-                        cout << "Keywords: ";
-        
-                        test = auxxxx.getKeywords().size();
-                        for(int j = 0; j < test; j++){
-                            cout << auxxxx.getKeywords().at(j) << ";";
-                        }
+                //         cout << endl;
+                //         ++itrF;
 
-                        cout << endl;
-                    }
+
+                //     }
+
+                //     if(geral.at(jj).choose == 1){
+                //         cout << *itrM << endl;
+                //         cout << "Artistas: ";
+                        
+                //         Musica auxx = *itrM;
+                //         int test = auxx.getArtistas().size();
+                //         for(int k = 0; k < test; k++){
+                //             cout << auxx.getArtistas().at(k) << ";";
+                //         }
+
+                //         cout << endl;
+                //         cout << "Keywords: ";
+                        
+                //         test = auxx.getKeywords().size();
+                //         for(int k = 0; k < test; k++){
+                //             cout << auxx.getKeywords().at(k) << ";";
+                //         }
+
+                //         cout << endl;
+                //         ++itrM;
+
+
+                //     }
+
+    //     int teste = filmes[j].getArtistas().size();
+    //     cout << teste << endl;
+    //     for (int i = 0; i < teste; i++) {
+    //         cout << filmes[j].getArtistas().at(i) << endl;
+    //     }
+    // }
+
                 
-                }
 
                 // sort(filmes.begin(), filmes.end(), ordenaData);
                 // int cont = 0, remove;
